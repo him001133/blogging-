@@ -1,4 +1,1 @@
-```
-# Build artifacts
-*.html
-```
+(index.html is a source file, so no ignores needed)
