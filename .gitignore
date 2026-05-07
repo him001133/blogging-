@@ -1,1 +1,1 @@
-(index.html is a source file, so no ignores needed)
+Nothing should be ignored based on the provided file changes. The only added file is `sip-calculator.html`, which is a source code file and should not be ignored.

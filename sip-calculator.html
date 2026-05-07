@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIP Calculator - Calculate Your Mutual Fund Returns | Your Blog Name</title>
+    <meta name="description" content="Use our free SIP Calculator to estimate your mutual fund returns. Calculate future value based on monthly investment, time period, and expected return rate.">
+    <meta name="keywords" content="SIP calculator, mutual fund calculator, investment calculator, SIP returns, financial planning">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="SIP Calculator - Plan Your Investments">
+    <meta property="og:description" content="Calculate your potential mutual fund returns with our easy-to-use SIP calculator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourblog.com/sip-calculator.html">
+    <meta property="og:image" content="https://yourblog.com/assets/images/sip-calculator-share.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourblog.com/sip-calculator.html">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Specific Styles for SIP Calculator */
+        .calculator-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: var(--bg-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .calc-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .input-group {
+            margin-bottom: 2rem;
+        }
+
+        .input-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .input-value {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background .15s ease-in-out;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: var(--secondary-color);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card h3 {
+            margin-top: 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .result-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            letter-spacing: -1px;
+        }
+
+        .result-breakdown {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 1.5rem;
+        }
+
+        .breakdown-item span {
+            display: block;
+        }
+
+        .breakdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .breakdown-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .chart-container {
+            margin-top: 2rem;
+            height: 250px;
+            position: relative;
+        }
+
+        /* Simple CSS Pie Chart Representation */
+        .pie-chart {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--primary-color) 0% 60%, 
+                #ffd700 60% 100%
+            );
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .pie-chart::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: var(--bg-color);
+            border-radius: 50%;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            margin-top: 2.5rem;
+        }
+
+        .cta-box {
+            background: #f8f9fa;
+            border-left: 5px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+    </style>
+    
+    <!-- Structured Data for Tool -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SIP Calculator",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "A free online calculator to estimate Systematic Investment Plan (SIP) returns."
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Navigation (Same as index) -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">YourBlog</a>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#categories" class="nav-link">Categories</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="sip-calculator.html" class="nav-link active">Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header" style="text-align: center; margin-top: 3rem;">
+            <h1>SIP Calculator</h1>
+            <p>Estimate the future value of your Systematic Investment Plans</p>
+        </header>
+
+        <div class="calculator-container">
+            <div class="calc-grid">
+                <!-- Input Section -->
+                <div class="inputs-section">
+                    <div class="input-group">
+                        <div class="input-label">
+                            <label for="investment">Monthly Investment</label>
+                            <span class="input-value">₹<span id="investment-val">10000</span></span>
+                        </div>
+                        <input type="range" id="investment" min="500" max="100000" step="500" value="10000">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-label">
+                            <label for="rate">Expected Return Rate (p.a)</label>
+                            <span class="input-value"><span id="rate-val">12</span>%</span>
+                        </div>
+                        <input type="range" id="rate" min="1" max="30" step="0.5" value="12">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-label">
+                            <label for="years">Time Period</label>
+                            <span class="input-value"><span id="years-val">10</span> Years</span>
+                        </div>
+                        <input type="range" id="years" min="1" max="40" step="1" value="10">
+                    </div>
+                </div>
+
+                <!-- Result Section -->
+                <div class="results-section">
+                    <div class="result-card">
+                        <h3>Total Value</h3>
+                        <div class="result-amount">₹<span id="total-value">19,94,677</span></div>
+                        
+                        <div class="result-breakdown">
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Invested</span>
+                                <span class="breakdown-value">₹<span id="invested-amt">12,00,000</span></span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Returns</span>
+                                <span class="breakdown-value">₹<span id="returns-amt">7,94,677</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="pie-chart" id="pie-chart"></div>
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--primary-color);"></div>
+                                <span>Invested</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #ffd700;"></div>
+                                <span>Returns</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content Section -->
+        <article class="content-section">
+            <h2>How to Use This SIP Calculator?</h2>
+            <p>A Systematic Investment Plan (SIP) allows you to invest a fixed amount regularly in mutual funds. Our calculator helps you visualize the power of compounding over time.</p>
+            <ol>
+                <li><strong>Monthly Investment:</strong> Slide to select how much you can invest every month.</li>
+                <li><strong>Expected Return Rate:</strong> Enter the expected annual return percentage (historically, equity funds give 12-15%).</li>
+                <li><strong>Time Period:</strong> Choose how many years you plan to stay invested.</li>
+            </ol>
+            <p>The calculator instantly shows your total investment, estimated returns, and the final maturity value.</p>
+
+            <h2>Why Invest via SIP?</h2>
+            <div class="cta-box">
+                <strong>Power of Compounding:</strong> Starting early allows your money to grow exponentially. Even small amounts invested regularly can build a massive corpus over 20-30 years.
+            </div>
+            <ul>
+                <li><strong>Rupee Cost Averaging:</strong> You buy more units when markets are low and fewer when markets are high, averaging out your cost.</li>
+                <li><strong>Financial Discipline:</strong> Automated deductions ensure you save consistently before spending.</li>
+                <li><strong>Flexibility:</strong> You can increase, decrease, or pause your SIP anytime.</li>
+            </ul>
+
+            <h2>Formula Used</h2>
+            <p>The calculation is based on the future value of an annuity due formula:</p>
+            <code style="display:block; background:#f4f4f4; padding:1rem; border-radius:8px; overflow-x:auto;">
+                FV = P × ({[1 + i]^n - 1} / i) × (1 + i)
+            </code>
+            <p>Where:<br>
+            FV = Future Value<br>
+            P = Monthly Investment<br>
+            i = Monthly Interest Rate (Annual Rate / 12)<br>
+            n = Total Number of Months (Years × 12)</p>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>YourBlog</h3>
+                <p>Modern insights for modern living.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sip-calculator.html">SIP Calculator</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Your Blog Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // SIP Calculator Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const investmentInput = document.getElementById('investment');
+            const rateInput = document.getElementById('rate');
+            const yearsInput = document.getElementById('years');
+
+            const investmentVal = document.getElementById('investment-val');
+            const rateVal = document.getElementById('rate-val');
+            const yearsVal = document.getElementById('years-val');
+
+            const totalValueEl = document.getElementById('total-value');
+            const investedAmtEl = document.getElementById('invested-amt');
+            const returnsAmtEl = document.getElementById('returns-amt');
+            const pieChart = document.getElementById('pie-chart');
+
+            function formatCurrency(num) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            function calculateSIP() {
+                const P = parseFloat(investmentInput.value);
+                const annualRate = parseFloat(rateInput.value);
+                const years = parseFloat(yearsInput.value);
+
+                // Update Labels
+                investmentVal.textContent = P;
+                rateVal.textContent = annualRate;
+                yearsVal.textContent = years;
+
+                // Calculations
+                const i = annualRate / 12 / 100; // Monthly interest rate
+                const n = years * 12; // Total months
+
+                // FV = P × ({[1 + i]^n - 1} / i) × (1 + i)
+                const fv = P * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+                
+                const invested = P * n;
+                const returns = fv - invested;
+
+                // Update Results
+                totalValueEl.textContent = formatCurrency(Math.round(fv));
+                investedAmtEl.textContent = formatCurrency(Math.round(invested));
+                returnsAmtEl.textContent = formatCurrency(Math.round(returns));
+
+                // Update Chart
+                const investedPercent = (invested / fv) * 100;
+                const returnsPercent = (returns / fv) * 100;
+                
+                pieChart.style.background = `conic-gradient(
+                    var(--primary-color) 0% ${investedPercent}%, 
+                    #ffd700 ${investedPercent}% 100%
+                )`;
+            }
+
+            // Event Listeners
+            investmentInput.addEventListener('input', calculateSIP);
+            rateInput.addEventListener('input', calculateSIP);
+            yearsInput.addEventListener('input', calculateSIP);
+
+            // Initial Calculation
+            calculateSIP();
+        });
+    </script>
+</body>
+</html>
