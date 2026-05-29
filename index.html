@@ -14,28 +14,26 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourusername.github.io/your-repo/">
+    <meta property="og:url" content="./">
     <meta property="og:title" content="Modern Blog - Insights & Stories">
     <meta property="og:description" content="Discover insightful articles on technology, design, and innovation.">
-    <meta property="og:image" content="https://yourusername.github.io/your-repo/assets/og-image.jpg">
+    <meta property="og:image" content="assets/images/og-image.svg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourusername.github.io/your-repo/">
+    <meta property="twitter:url" content="./">
     <meta property="twitter:title" content="Modern Blog - Insights & Stories">
     <meta property="twitter:description" content="Discover insightful articles on technology, design, and innovation.">
-    <meta property="twitter:image" content="https://yourusername.github.io/your-repo/assets/og-image.jpg">
+    <meta property="twitter:image" content="assets/images/og-image.svg">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://yourusername.github.io/your-repo/">
+    <link rel="canonical" href="./">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     
     <!-- Preload Critical Resources -->
     <link rel="preload" href="styles/main.css" as="style">
-    <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/main.css">
@@ -47,13 +45,13 @@
         "@type": "Blog",
         "name": "Modern Blog",
         "description": "Insightful articles on technology, design, and innovation",
-        "url": "https://yourusername.github.io/your-repo/",
+        "url": "./",
         "publisher": {
             "@type": "Person",
             "name": "Your Name",
             "image": {
                 "@type": "ImageObject",
-                "url": "https://yourusername.github.io/your-repo/assets/profile.jpg"
+                "url": "assets/images/profile.svg"
             }
         }
     }
@@ -66,7 +64,7 @@
     <!-- Header -->
     <header class="header" role="banner">
         <nav class="nav container" aria-label="Main navigation">
-            <a href="/" class="logo" aria-label="Modern Blog Home">
+            <a href="./" class="logo" aria-label="Modern Blog Home">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <rect width="40" height="40" rx="8" fill="var(--primary-color)"/>
                     <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="20" fill="white" font-family="system-ui">M</text>
@@ -79,10 +77,10 @@
             </button>
             
             <ul class="nav-menu">
-                <li><a href="/" class="nav-link active">Home</a></li>
-                <li><a href="/categories/" class="nav-link">Categories</a></li>
-                <li><a href="/about/" class="nav-link">About</a></li>
-                <li><a href="/contact/" class="nav-link">Contact</a></li>
+                <li><a href="./" class="nav-link active">Home</a></li>
+                <li><a href="categories/" class="nav-link">Categories</a></li>
+                <li><a href="about/" class="nav-link">About</a></li>
+                <li><a href="contact/" class="nav-link">Contact</a></li>
             </ul>
             
             <div class="nav-actions">
@@ -117,7 +115,7 @@
                 <p class="hero-subtitle">Discover insightful articles on technology, design, and innovation. Join our community of curious minds.</p>
                 <div class="hero-cta">
                     <a href="#featured-posts" class="btn btn-primary">Explore Articles</a>
-                    <a href="/newsletter/" class="btn btn-secondary">Subscribe</a>
+                    <a href="newsletter/" class="btn btn-secondary">Subscribe</a>
                 </div>
             </div>
         </section>
@@ -129,9 +127,9 @@
                 <div class="posts-grid">
                     <!-- Article Card 1 -->
                     <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
-                        <a href="/posts/getting-started-with-web-development/" class="post-card-link" itemprop="url">
+                        <a href="posts/getting-started-with-web-development/" class="post-card-link" itemprop="url">
                             <div class="post-card-image">
-                                <img src="assets/images/web-dev.jpg" alt="Web development workspace with code on screen" loading="lazy" width="600" height="400" itemprop="image">
+                                <img src="assets/images/web-dev.svg" alt="Web development workspace with code on screen" loading="lazy" width="600" height="400" itemprop="image">
                                 <span class="post-category">Development</span>
                             </div>
                             <div class="post-card-content">
@@ -147,9 +145,9 @@
 
                     <!-- Article Card 2 -->
                     <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
-                        <a href="/posts/design-systems-guide/" class="post-card-link" itemprop="url">
+                        <a href="posts/design-systems-guide/" class="post-card-link" itemprop="url">
                             <div class="post-card-image">
-                                <img src="assets/images/design-systems.jpg" alt="Design system components and guidelines" loading="lazy" width="600" height="400" itemprop="image">
+                                <img src="assets/images/design-systems.svg" alt="Design system components and guidelines" loading="lazy" width="600" height="400" itemprop="image">
                                 <span class="post-category">Design</span>
                             </div>
                             <div class="post-card-content">
@@ -165,9 +163,9 @@
 
                     <!-- Article Card 3 -->
                     <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
-                        <a href="/posts/performance-optimization/" class="post-card-link" itemprop="url">
+                        <a href="posts/performance-optimization/" class="post-card-link" itemprop="url">
                             <div class="post-card-image">
-                                <img src="assets/images/performance.jpg" alt="Website performance metrics dashboard" loading="lazy" width="600" height="400" itemprop="image">
+                                <img src="assets/images/performance.svg" alt="Website performance metrics dashboard" loading="lazy" width="600" height="400" itemprop="image">
                                 <span class="post-category">Performance</span>
                             </div>
                             <div class="post-card-content">
@@ -189,22 +187,22 @@
             <div class="container">
                 <h2 id="categories-title">Browse by Category</h2>
                 <div class="categories-grid">
-                    <a href="/categories/development/" class="category-card">
+                    <a href="categories/development/" class="category-card">
                         <span class="category-icon">💻</span>
                         <h3>Development</h3>
                         <p>12 articles</p>
                     </a>
-                    <a href="/categories/design/" class="category-card">
+                    <a href="categories/design/" class="category-card">
                         <span class="category-icon">🎨</span>
                         <h3>Design</h3>
                         <p>8 articles</p>
                     </a>
-                    <a href="/categories/tutorials/" class="category-card">
+                    <a href="categories/tutorials/" class="category-card">
                         <span class="category-icon">📚</span>
                         <h3>Tutorials</h3>
                         <p>15 articles</p>
                     </a>
-                    <a href="/categories/news/" class="category-card">
+                    <a href="categories/news/" class="category-card">
                         <span class="category-icon">📰</span>
                         <h3>News</h3>
                         <p>6 articles</p>
@@ -235,7 +233,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="/" class="logo">
+                    <a href="./" class="logo">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <rect width="40" height="40" rx="8" fill="var(--primary-color)"/>
                             <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="20" fill="white" font-family="system-ui">M</text>
@@ -259,39 +257,39 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about/">About</a></li>
-                        <li><a href="/categories/">Categories</a></li>
-                        <li><a href="/contact/">Contact</a></li>
+                        <li><a href="./">Home</a></li>
+                        <li><a href="about/">About</a></li>
+                        <li><a href="categories/">Categories</a></li>
+                        <li><a href="contact/">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h3>Categories</h3>
                     <ul>
-                        <li><a href="/categories/development/">Development</a></li>
-                        <li><a href="/categories/design/">Design</a></li>
-                        <li><a href="/categories/tutorials/">Tutorials</a></li>
-                        <li><a href="/categories/news/">News</a></li>
+                        <li><a href="categories/development/">Development</a></li>
+                        <li><a href="categories/design/">Design</a></li>
+                        <li><a href="categories/tutorials/">Tutorials</a></li>
+                        <li><a href="categories/news/">News</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h3>Calculators</h3>
                     <ul>
-                        <li><a href="/calculators/sip-calculator.html">SIP Calculator</a></li>
-                        <li><a href="/calculators/emi-calculator.html">EMI Calculator</a></li>
-                        <li><a href="/calculators/ppf-calculator.html">PPF Calculator</a></li>
-                        <li><a href="/calculators/fd-calculator.html">FD Calculator</a></li>
+                        <li><a href="calculators/sip-calculator.html">SIP Calculator</a></li>
+                        <li><a href="calculators/emi-calculator.html">EMI Calculator</a></li>
+                        <li><a href="calculators/ppf-calculator.html">PPF Calculator</a></li>
+                        <li><a href="calculators/fd-calculator.html">FD Calculator</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="/terms-of-service/">Terms of Service</a></li>
-                        <li><a href="/cookie-policy/">Cookie Policy</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service/">Terms of Service</a></li>
+                        <li><a href="cookie-policy/">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>

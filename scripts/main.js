@@ -90,9 +90,11 @@ function initSearch() {
         const query = searchInput.value.trim();
         
         if (query) {
-            // In a real implementation, this would search your content
-            // For now, redirect to a search results page
-            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            const script = document.querySelector('script[src*="scripts/main.js"]');
+            const siteRoot = script
+                ? new URL(script.getAttribute('src'), window.location.href).href.replace(/scripts\/main\.js(?:[?#].*)?$/, '')
+                : './';
+            window.location.href = `${siteRoot}search/?q=${encodeURIComponent(query)}`;
         }
     };
 

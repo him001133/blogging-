@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://yourusername.github.io/your-repo/</loc>
-        <lastmod>2024-01-15</lastmod>
+        <loc>./</loc>
+        <lastmod>2026-05-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://yourusername.github.io/your-repo/categories/</loc>
-        <lastmod>2024-01-15</lastmod>
+        <loc>categories/</loc>
+        <lastmod>2026-05-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://yourusername.github.io/your-repo/about/</loc>
-        <lastmod>2024-01-15</lastmod>
+        <loc>about/</loc>
+        <lastmod>2026-05-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://yourusername.github.io/your-repo/posts/sample-post/</loc>
-        <lastmod>2024-01-15</lastmod>
+        <loc>posts/sample-post/</loc>
+        <lastmod>2026-05-29</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>calculators/sip-calculator.html</loc>
+        <lastmod>2026-05-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>privacy-policy.html</loc>
+        <lastmod>2026-05-29</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
 </urlset>
