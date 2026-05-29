@@ -41,35 +41,37 @@ function initThemeToggle() {
  * Mobile Navigation Toggle
  */
 function initMobileNav() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    const navToggle = document.querySelector('.nav-toggle, .mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu, .main-nav');
     
     if (!navToggle || !navMenu) return;
 
+    const setMenuState = (isOpen) => {
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        navMenu.classList.toggle('active', isOpen);
+        navToggle.classList.toggle('active', isOpen);
+    };
+
     navToggle.addEventListener('click', () => {
         const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', !isExpanded);
-        navMenu.classList.toggle('active');
-        
-        // Animate hamburger menu
-        navToggle.classList.toggle('active');
+        setMenuState(!isExpanded);
+    });
+
+    navMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMenuState(false));
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-            navToggle.setAttribute('aria-expanded', 'false');
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+            setMenuState(false);
         }
     });
 
     // Close menu on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            navToggle.setAttribute('aria-expanded', 'false');
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+            setMenuState(false);
         }
     });
 }
@@ -90,9 +92,11 @@ function initSearch() {
         const query = searchInput.value.trim();
         
         if (query) {
-            // In a real implementation, this would search your content
-            // For now, redirect to a search results page
-            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            const script = document.querySelector('script[src*="scripts/main.js"]');
+            const siteRoot = script
+                ? new URL(script.getAttribute('src'), window.location.href).href.replace(/scripts\/main\.js(?:[?#].*)?$/, '')
+                : './';
+            window.location.href = `${siteRoot}search/?q=${encodeURIComponent(query)}`;
         }
     };
 
